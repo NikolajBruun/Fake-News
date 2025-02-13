@@ -6,5 +6,3 @@ notepad README.md (windows)
 nano README.md (mac)
 
 Husk at commit tho
-
-Daniel Vil gerne lave en test
