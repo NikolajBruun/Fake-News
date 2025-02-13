@@ -1,5 +1,5 @@
 # Fake-News
-Vores eksamensprojekt... try no to fuck it up
+Vores eksamensprojekt... try not to fuck it up
 
 hvis i vil change lidt i den her kan i skrive:
 notepad README.md (windows)
