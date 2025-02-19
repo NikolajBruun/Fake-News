@@ -1,3 +1,7 @@
-Her laves der sej kode
-ny prøve
-hej med dig
+#Funktion til at indlæse csv-filen som en string
+def læs_fil(fil):
+    with open(fil, 'r') as file:
+        text = file.read().strip()
+    return text
+
+tekst = læs_fil("navn på fil")
