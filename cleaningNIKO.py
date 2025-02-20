@@ -113,7 +113,7 @@ auto_cleaning_df['filtered_tokens'] = auto_cleaning_df['tokens'].apply(lambda x:
     word for word in x if word.lower() not in stop_words and not any(tword in word.lower() for tword in ["number", "date", "url", "email", "<", ">"])
 ])
 
-# Vis de første par rækker af de filtrerede tokens
+# Vis de førsfte par rækker af de filtrerede tokens
 print(auto_cleaning_df['filtered_tokens'].head())
 
 
