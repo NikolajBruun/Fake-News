@@ -58,5 +58,26 @@ def remove_special_chars(x):
 my_cleaning_df['remove_special_chars'] = my_cleaning_df['sub_url'].apply(remove_special_chars)
 
 
-print(my_cleaning_df['remove_special_chars'].head(10))
+#print(my_cleaning_df['remove_special_chars'].head(10))
+
+#ovenfor har vi lidt hygge
+#nu bruger jeg clean-text modulet til at cleane med... stoler vi nok lidt mere på tbh
+
+from cleantext import clean 
+
+auto_cleaning_df = df[["content"]].copy()
+
+def remove_special_chars(x):
+    return re.sub(r"[^a-zA-Z0-9<>]", " ", x)
+
+auto_cleaning_df['remove_special_chars'] = auto_cleaning_df['content'].apply(remove_special_chars)
+
+
+#auto_cleaning_df['cleaned'] = clean(auto_cleaning_df['content'], lower=True, no_urls=True, no_emails=True, no_numbers=True)
+auto_cleaning_df['cleaned'] = auto_cleaning_df['remove_special_chars'].apply(
+    lambda x: clean(x, lower=True, no_urls=True, no_emails=True, no_numbers=True)
+)
+print(auto_cleaning_df['cleaned'].head())
+
+#nice nu virker det
 
