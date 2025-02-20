@@ -159,3 +159,9 @@ plt.xticks(rotation=45, ha='right', fontsize=11)        #Teksten på x-aksen rot
 print("=================================================================================")
 print("=================================================================================")
 #STEMMING!!!!
+
+ps=PorterStemmer()
+
+auto_cleaning_df['stemmed_text']=auto_cleaning_df['cleaned'].apply(lambda x: ps.stem(x))
+
+print(auto_cleaning_df['stemmed_text'].head(50))
