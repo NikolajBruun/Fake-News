@@ -77,7 +77,7 @@ auto_cleaning_df['remove_special_chars'] = auto_cleaning_df['content'].apply(rem
 auto_cleaning_df['cleaned'] = auto_cleaning_df['remove_special_chars'].apply(
     lambda x: clean(x, lower=True, no_urls=True, no_emails=True, no_numbers=True)
 )
-print(auto_cleaning_df['cleaned'].head())
+print(df['content'].head(99))
 
 #nice nu virker det
 
