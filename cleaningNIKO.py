@@ -12,10 +12,10 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 
-df = pd.DataFrame(pd.read_csv("news_sample.csv"))
+df = pd.DataFrame(pd.read_csv("995,000_rows.csv"))
 
 print(df.head(2))
-my_cleaning_df = df[["content"]].copy()
+my_cleaning_df = df[["content"]].astype(str).copy()
 #jeg vælger kun at cleane 'content' kolonnen 
 
 
