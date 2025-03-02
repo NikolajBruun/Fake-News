@@ -92,4 +92,4 @@ ps=PorterStemmer()
 
 auto_cleaning_df['stemmed_text']=auto_cleaning_df['cleaned'].apply(lambda x: ps.stem(x))
 
-print(auto_cleaning_df['stemmed_text'].head(50))
+print(auto_cleaning_df['stemmed_text'].head(3))
