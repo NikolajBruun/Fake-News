@@ -12,10 +12,10 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 
-df = pd.DataFrame(pd.read_csv("995,000_rows.csv"))
+df = pd.DataFrame(pd.read_csv("news_sample.csv"))
 
 print(df.head(2))
-my_cleaning_df = df[["content"]].astype(str).copy()
+my_cleaning_df = df[["content"]].copy()
 #jeg vælger kun at cleane 'content' kolonnen 
 
 
@@ -155,21 +155,8 @@ print("=========================================================================
 print("=================================================================================")
 #STEMMING!!!!
 
+ps=PorterStemmer()
 
-liste_alleord = list(alle_ord)
+auto_cleaning_df['stemmed_text']=auto_cleaning_df['cleaned'].apply(lambda x: ps.stem(x))
 
-def stemmefunktion(liste_tekst):
-    ps = PorterStemmer()
-    stemmede_ord = [ps.stem(w) for w in liste_tekst] 
-    set(stemmede_ord)
-    return set(stemmede_ord)
-
-df_stemmede = stemmefunktion(liste_alleord)
-
-
-#ANTAL ORD EFTER STEMMING
-print("Antal ord efter stemming",len(df_stemmede))
-
-#Reduction rate efter stemming
-
-print("Reduction rate", 100-(len(df_stemmede)/len(set(words))*100))
+print(auto_cleaning_df['stemmed_text'].head(50))
