@@ -74,6 +74,8 @@ def remove_special_chars(x):
 # Stopwords fra NLTK
 stop_words = set(stopwords.words('english'))
 
+from cleantext import clean
+
 # Betingelse for at fjerne stopwords og de ord, vi ikke ønsker
 #auto_cleaning_df['filtered_tokens'] = auto_cleaning_df['tokens'].apply(lambda x: [
   #  word for word in x if word.lower() not in stop_words and not any(tword in word.lower() for tword in ["number", "date", "url", "email", "<", ">"])
@@ -138,4 +140,25 @@ ps=PorterStemmer()
 
 auto_cleaning_df['stemmed_text']=auto_cleaning_df['cleaned'].apply(lambda x: ps.stem(x))
 
-print(auto_cleaning_df['stemmed_text'].head(50))
+#print(auto_cleaning_df['stemmed_text'].head(50))
+
+category_mapping = {
+    "fake": "Fake News",
+    "satire": "Fake Fake",
+    "bias": "Fake News",
+    "conspiracy": "Fake News",
+    "junksci": "Fake News",
+    "hate": "Not Fake",
+    "clickbait": "Not Fake",
+    "unreliable": "Not News",
+    "political": "Not Fake",
+    "reliable": "Not Fake"  
+}
+
+# Apply the mapping
+df['broad_category'] = df['type'].map(category_mapping)
+
+# Check the result to make sure mapping is performed correctly
+print(df[['broad_category', 'type']].head(10))
+
+    
