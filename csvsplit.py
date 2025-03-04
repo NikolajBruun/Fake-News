@@ -19,3 +19,20 @@ print(f"Test: {len(test)} rækker")
 train.to_csv('train_set.csv', index=False)
 val.to_csv('val_set.csv', index=False)
 test.to_csv('test_set.csv', index=False)
+
+
+category_mapping = {
+    "fake": "Fake News",
+    "satire": "Fake Fake",
+    "bias": "Fake News",
+    "conspiracy": "Fake News",
+    "junksci": "Fake News",
+    "hate": "Not Fake",
+    "clickbait": "Not Fake",
+    "unreliable": "Not News",
+    "political": "Not Fake",
+    "reliable": "Not Fake"  
+}
+
+# Apply the mapping
+df['broad_category'] = df['type'].map(category_mapping)
