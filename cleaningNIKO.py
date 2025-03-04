@@ -6,7 +6,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
-
+from cleantext import clean 
 # Sørg for, at nødvendige data er downloadet
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -14,18 +14,13 @@ nltk.download('stopwords')
 
 df = pd.DataFrame(pd.read_csv("news_sample.csv"))
 
-print(df.head(2))
 my_cleaning_df = df[["content"]].copy()
-#jeg vælger kun at cleane 'content' kolonnen 
-
 
 
 def all_lower(x):
-    #if isinstance(x,str):
     x= x.lower()
     return x
 
-#print(my_cleaning_df['all_lower'].head(2))
 def remove_whitespace(x):
     remove= re.sub(r'\s+',' ',x).strip()
     return remove
@@ -47,17 +42,6 @@ def remove_special_chars(x):
     return re.sub(r"[^a-zA-Z0-9<>]", " ", x)
 
 
-
-#optimér dette til en pipeline...
-#my_cleaning_df['all_lower'] = my_cleaning_df['content'].apply(all_lower)
-# my_cleaning_df['remove_whitespace'] = my_cleaning_df['all_lower'].apply(remove_whitespace)
-# my_cleaning_df['sub_num'] = my_cleaning_df['remove_whitespace'].apply(sub_num)
-# my_cleaning_df['sub_dates'] = my_cleaning_df['sub_num'].apply(sub_dates)
-# my_cleaning_df['sub_email'] = my_cleaning_df['sub_dates'].apply(sub_email)
-# my_cleaning_df['sub_url'] = my_cleaning_df['sub_email'].apply(sub_url)
-# my_cleaning_df['remove_special_chars'] = my_cleaning_df['sub_url'].apply(remove_special_chars)
-
-
 def clean_df(df,content):
     df['all_lower'] = df[content].apply(all_lower)
     df['remove_whitespace']=df['all_lower'].apply(remove_whitespace)
@@ -68,11 +52,7 @@ def clean_df(df,content):
     df['remove_special_chars'] = df['sub_url'].apply(remove_special_chars)
 
 clean_df(my_cleaning_df,'content')
-print("jeg printer her", my_cleaning_df.head(10))
 
-#nu bruger jeg clean-text modulet til at cleane med... stoler vi nok lidt mere på tbh
-
-from cleantext import clean 
 
 auto_cleaning_df = df[["content"]].copy()
 
