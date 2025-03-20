@@ -2,7 +2,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # Læs CSV-filen ind
-df = pd.read_csv('news_sample.csv')
+df = pd.read_csv('/Users/Danie/GDS/CSV/995,000_rows.csv')
+
+#"C:\Users\Danie\GDS\CSV\995,000_rows.csv"
 
 # Først splittes dataene i træningssæt (80%) og resten (20%)
 train, temp = train_test_split(df, test_size=0.2, random_state=42)
@@ -16,6 +18,6 @@ print(f"Validation: {len(val)} rækker")
 print(f"Test: {len(test)} rækker")
 
 # Gem de opdelte data i nye CSV-filer (valgfrit)
-train.to_csv('train_set.csv', index=False)
-val.to_csv('val_set.csv', index=False)
-test.to_csv('test_set.csv', index=False)
+train.to_csv('full_train_set.csv', index=False)
+val.to_csv('full_val_set.csv', index=False)
+test.to_csv('full_test_set.csv', index=False)
