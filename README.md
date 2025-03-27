@@ -17,14 +17,25 @@ This project include multiple Jypiter Notebooks. There are different notebooks f
 
 Chronological order of how our files should be run
 
-CSV_split.ipynb
-Cleaning_File.ipynb
-LogisticReg.ipynb
-SVM.ipynb
+- Cleaning_File.ipynb
+- CSV_split.ipynb
+- LogisticReg.ipynb
+- SVM.ipynb
 
 
 Graphs.ipynb
 LengthCorr.ipynb
+liardataset.ipynb
+
+
+### Cleaning_File.ipynb
+This jupyter notebook file pipelines the cleaning process of all datasets. The cleaning include, removing all articles that aren't english, cleaning and stemming. 
+
+Input:
+  995,000_rows.csv
+  liar
+  bbc_
+  
 
 
 ### CSV_split.ipynb
@@ -33,9 +44,16 @@ Purpose is to divide the large corpus into a training set(80%), validation set(1
 Before we split we also divide the articles into a broad category of "Fake News" and "Reliable" which we will use in the logistic regression and SVM. 
 
 Input:
+  large_corpus_cleaned.csv
+  
   995,000_rows.csv
 
 Output:
+  train_set.csv
+  val_set.csv
+  test_set.csv
+  
+  
   
 
 
